@@ -16,7 +16,6 @@ body {
     background: #ffffff;
 }
 
-
 /* =========================================
    LOGIN PAGE
 ========================================= */
@@ -38,7 +37,6 @@ body {
     );
 }
 
-
 /* =========================================
    LOGIN CARD
 ========================================= */
@@ -56,7 +54,6 @@ body {
     box-shadow:
         0 10px 30px rgba(0, 0, 0, 0.18);
 }
-
 
 /* =========================================
    LOGO
@@ -82,7 +79,6 @@ body {
     font-weight: 700;
 }
 
-
 /* =========================================
    TITLE
 ========================================= */
@@ -98,7 +94,6 @@ body {
     margin-bottom: 8px;
 }
 
-
 .subtitle {
     text-align: center;
 
@@ -109,7 +104,6 @@ body {
     margin-bottom: 30px;
 }
 
-
 /* =========================================
    FORM
 ========================================= */
@@ -118,7 +112,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-
 
 .login-container label {
     display: block;
@@ -132,11 +125,9 @@ body {
     margin-top: 16px;
 }
 
-
 .login-container label:first-child {
     margin-top: 0;
 }
-
 
 /* =========================================
    INPUTS
@@ -164,11 +155,9 @@ body {
     transition: 0.2s;
 }
 
-
 .login-container input::placeholder {
     color: #999999;
 }
-
 
 .login-container input:focus,
 .login-container select:focus {
@@ -178,7 +167,6 @@ body {
         0 0 0 2px rgba(91, 76, 225, 0.10);
 }
 
-
 /* =========================================
    SELECT
 ========================================= */
@@ -186,7 +174,6 @@ body {
 .login-container select {
     cursor: pointer;
 }
-
 
 /* =========================================
    SIGN IN BUTTON
@@ -214,16 +201,13 @@ body {
     transition: 0.2s;
 }
 
-
 .login-container button:hover {
     background: #4438c5;
 }
 
-
 .login-container button:active {
     transform: scale(0.99);
 }
-
 
 .login-container button:disabled {
     background: #aaa;
@@ -232,7 +216,6 @@ body {
 
     transform: none;
 }
-
 
 /* =========================================
    LOGIN MESSAGE
@@ -250,7 +233,6 @@ body {
     font-weight: 600;
 }
 
-
 /* =========================================
    FOOTER
 ========================================= */
@@ -267,13 +249,11 @@ body {
     line-height: 1.5;
 }
 
-
 /* =========================================
    MOBILE
 ========================================= */
 
 @media (max-width: 500px) {
-
     .login-page {
         padding: 15px;
     }
@@ -285,5 +265,4 @@ body {
     .login-container h1 {
         font-size: 21px;
     }
-
 }
