@@ -31,6 +31,8 @@ jobs:
 
       - name: Build React app
         working-directory: frontend
+        env:
+          VITE_API_URL: https://trainee-management-system.onrender.com
         run: npm run build
 
       - name: Setup Pages
