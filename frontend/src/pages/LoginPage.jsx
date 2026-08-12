@@ -42,17 +42,14 @@ function LoginPage() {
             setLoading(true);
 
 
-            const response = await apiClient.post(
-                "/api/auth/login",
-                {
-                    username: username.trim(),
-                    password: password,
-
-                    // NEW: Send selected role to backend
-                    role: role
-                }
-            );
-
+         const response = await apiClient.post(
+    "/api/auth/login",
+    {
+        username: username.trim(),
+        password: password,
+        role: role
+    }
+);
 
             if (response.data.success) {
 
