@@ -9,6 +9,9 @@ function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    // NEW: Role state
+    const [role, setRole] = useState("trainee");
+
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -43,7 +46,10 @@ function LoginPage() {
                 "/api/auth/login",
                 {
                     username: username.trim(),
-                    password
+                    password: password,
+
+                    // NEW: Send selected role to backend
+                    role: role
                 }
             );
 
@@ -199,7 +205,9 @@ function LoginPage() {
                 >
 
 
-                    {/* USERNAME */}
+                    {/* ==========================================
+                        USERNAME
+                    ========================================== */}
 
                     <label htmlFor="username">
                         Username
@@ -218,7 +226,9 @@ function LoginPage() {
                     />
 
 
-                    {/* PASSWORD */}
+                    {/* ==========================================
+                        PASSWORD
+                    ========================================== */}
 
                     <label htmlFor="password">
                         Password
@@ -237,7 +247,37 @@ function LoginPage() {
                     />
 
 
-                    {/* LOGIN BUTTON */}
+                    {/* ==========================================
+                        LOGIN AS
+                    ========================================== */}
+
+                    <label htmlFor="role">
+                        Login as
+                    </label>
+
+                    <select
+                        id="role"
+                        value={role}
+                        onChange={(e) =>
+                            setRole(e.target.value)
+                        }
+                        disabled={loading}
+                    >
+
+                        <option value="trainee">
+                            Trainee
+                        </option>
+
+                        <option value="admin">
+                            Admin
+                        </option>
+
+                    </select>
+
+
+                    {/* ==========================================
+                        LOGIN BUTTON
+                    ========================================== */}
 
                     <button
                         type="submit"

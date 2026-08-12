@@ -2,7 +2,6 @@ const db = require("../config/db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-
 // ==========================================
 // LOGIN
 // ==========================================
@@ -11,33 +10,40 @@ exports.login = (req, res) => {
 
     const {
         username,
-        password
+        password,
+        role
     } = req.body;
 
 
-    // Validate input
-    if (!username || !password) {
+    // ==========================================
+    // VALIDATE INPUT
+    // ==========================================
+
+    if (!username || !password || !role) {
 
         return res.status(400).json({
 
             success: false,
 
             message:
-                "Username and Password are required"
+                "Username, Password and Role are required"
 
         });
 
     }
 
 
-    // Find user
+    // ==========================================
+    // FIND USER WITH SELECTED ROLE
+    // ==========================================
+
     const sql =
-        "SELECT * FROM users WHERE username = ?";
+        "SELECT * FROM users WHERE username = ? AND role = ?";
 
 
     db.query(
         sql,
-        [username],
+        [username, role],
         async (err, result) => {
 
             if (err) {
@@ -59,7 +65,10 @@ exports.login = (req, res) => {
             }
 
 
-            // User doesn't exist
+            // ==========================================
+            // USER DOESN'T EXIST
+            // ==========================================
+
             if (result.length === 0) {
 
                 return res.status(401).json({
@@ -67,7 +76,7 @@ exports.login = (req, res) => {
                     success: false,
 
                     message:
-                        "Invalid Username"
+                        "Invalid username or role"
 
                 });
 
@@ -77,7 +86,10 @@ exports.login = (req, res) => {
             const user = result[0];
 
 
-            // Compare password
+            // ==========================================
+            // COMPARE PASSWORD
+            // ==========================================
+
             try {
 
                 const match =
@@ -101,7 +113,10 @@ exports.login = (req, res) => {
                 }
 
 
-                // Create JWT
+                // ==========================================
+                // CREATE JWT
+                // ==========================================
+
                 const token =
                     jwt.sign(
 
@@ -120,7 +135,10 @@ exports.login = (req, res) => {
                     );
 
 
-                // Send response
+                // ==========================================
+                // SEND RESPONSE
+                // ==========================================
+
                 return res.json({
 
                     success: true,
